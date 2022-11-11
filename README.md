@@ -4,6 +4,24 @@
 
 ###### steps for setting up the project on a local machine
 
+#### Used Enviroment Variables:
+
+```
+ENV=dev
+PORT=8080
+
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=legit
+POSTGRES_PASSWORD=miro
+POSTGRES_DB=store_backend
+POSTGRES_TEST_DB=store_backend_testing
+
+BCRYPT_ROUNDS=10
+BCRYPT_PASSWORD_PAPER=nodeprecation
+JWT_SECRET=fearthefearsome
+```
+
 ### 1. Create Database & User
 
 #### Terminal commands

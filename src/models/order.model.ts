@@ -22,6 +22,21 @@ export class OrderStore {
     }
   }
 
+  async show(user_id: String): Promise<Order[]> {
+    try {
+      const conn = await Client.connect();
+      const sql = `SELECT * FROM orders WHERE user_id = ($1)`;
+
+      const result = await conn.query(sql, [user_id]);
+
+      conn.release();
+
+      return result.rows;
+    } catch (error) {
+      throw new Error(`Unable to get orders: ${error}`);
+    }
+  }
+
   async create(order: Order): Promise<Order[]> {
     try {
       const conn = await Client.connect();

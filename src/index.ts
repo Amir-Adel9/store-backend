@@ -2,8 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import usersRoutes from './controllers/users.controller';
-// import orderRoutes from './controllers/orders.controller';
-// import productRoutes from './controllers/products.controller';
+import productRoutes from './controllers/products.controller';
+import orderRoutes from './controllers/orders.controller';
 
 dotenv.config();
 
@@ -18,9 +18,11 @@ app.get('/', (req, res) =>
 );
 
 usersRoutes(app);
-// orderRoutes(app);
-// productRoutes(app);
+productRoutes(app);
+orderRoutes(app);
 
 app.listen(PORT, () =>
   console.log(`server running on: http://localhost:${PORT}`)
 );
+
+export default app;

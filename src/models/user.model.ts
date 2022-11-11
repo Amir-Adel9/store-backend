@@ -15,7 +15,7 @@ export type User = {
 };
 
 export class UserStore {
-  async index(id: String): Promise<User[]> {
+  async index(): Promise<User[]> {
     try {
       const conn = await Client.connect();
       const sql = `SELECT * FROM users`;
@@ -27,6 +27,21 @@ export class UserStore {
       return result.rows;
     } catch (err) {
       throw new Error(`Unable to show users: ${err}`);
+    }
+  }
+
+  async show(id: String): Promise<User[]> {
+    try {
+      const conn = await Client.connect();
+      const sql = `SELECT * FROM users WHERE id = ($1)`;
+
+      const result = await conn.query(sql, [id]);
+
+      conn.release();
+
+      return result.rows;
+    } catch (error) {
+      throw new Error(`Unable to show user ${id}: ${error}`);
     }
   }
 
